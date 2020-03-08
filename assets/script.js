@@ -1,41 +1,57 @@
-
 var time = $("#currentDay");
 var blocks = $(".container");
 
-time.text(moment().format('MMMM Do YYYY, h:mm a'));
+time.text(moment().format("MMMM Do YYYY, h:mm a"));
 
 
-var hours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+var hours = 9
+var currentHour = moment().format("hA");
+
 function createRow() {
 
-var currentHour = parseInt(moment().format("h"));
+    for( var i = 0; i < hours; i++) {
 
-    for( var i = 0; i < hours.length; i++) {
-
-        var newRow = $("<div>").addClass("row time-block");
+        var newRow = $("<div>").addClass("row");
 
         var timeBlock = $("<div>").addClass("col-md-1 hour d-flex justify-content-center align-items-center");
-        var list = $("<div>").addClass("col-md-10 description");
-        var save = $("<div>").addClass("col-md-1 saveBtn");
+        var list = $("<div>").addClass("col-md-10 time-block description");
+        var save = $("<div>").addClass("col-md-1 saveBtn d-flex justify-content-center align-items-center");
 
-        if (i < 3) {
-            timeBlock.text(hours[i] + "AM");
-        } else {
-            timeBlock.text(hours[i] + "PM");
-        }
+        var otherHour = moment('03-08-2020 11:00 AM', 'MM-DD-YYYY hh:mm A').add(i, "hours").format("hA");
 
-        if (hours[i] === currentHour ) {
+        timeBlock.text(otherHour);
+
+        if (moment(otherHour, "hA").isSame(moment(currentHour, "hA"))) {
             list.addClass("present");
-        } else if (hours[i] < currentHour) {
-            list.addClass("past");
-        } else if (hours[i] > currentHour) {
+        } else if (moment(otherHour, "hA").isAfter(moment(currentHour, "hA"))) {
             list.addClass("future");
+        } else {
+            list.addClass("past");
         };
+
+        var saveBtn = $("<button>").text("Save");
+        save.append(saveBtn);
+
+        var text = $("<textarea>").addClass("");
+        list.append(text);
 
         blocks.append(newRow);
         newRow.append(timeBlock, list, save);
+
+        
+
     };
 
 };
 
 createRow();
+
+// var active_time = moment.utc('2015-06-04T15:00Z', 'YYYY-MM-DD[T]HH:mm[Z]');
+// var current_time = moment.utc('2015-06-04T16:00Z', 'YYYY-MM-DD[T]HH:mm[Z]');
+
+// console.log('active_time =',active_time.format());
+// console.log('current_time =',current_time.format());
+// console.log( active_time.isAfter(current_time) );
+
+
+
