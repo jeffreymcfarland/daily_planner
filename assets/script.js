@@ -14,10 +14,10 @@ function createRow() {
         var newRow = $("<div>").addClass("row");
 
         var timeBlock = $("<div>").addClass("col-md-1 hour d-flex justify-content-center align-items-center");
-        var list = $("<div>").addClass("col-md-10 time-block description");
+        var list = $("<div>").addClass("col-md-10 time-block d-flex");
         var save = $("<div>").addClass("col-md-1 saveBtn d-flex justify-content-center align-items-center");
 
-        var otherHour = moment('03-08-2020 11:00 AM', 'MM-DD-YYYY hh:mm A').add(i, "hours").format("hA");
+        var otherHour = moment('03-08-2020 9:00 AM', 'MM-DD-YYYY hh:mm A').add(i, "hours").format("hA");
 
         timeBlock.text(otherHour);
 
@@ -32,7 +32,7 @@ function createRow() {
         var saveBtn = $("<button>").text("Save");
         save.append(saveBtn);
 
-        var text = $("<textarea>").addClass("");
+        var text = $("<textarea>").addClass("description flex-fill");
         list.append(text);
 
         blocks.append(newRow);
