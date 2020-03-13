@@ -1,8 +1,7 @@
-# The Jeffrey Quiz
+# Work Day Planner
 
-Live Link: [https://jeffreymcfarland.github.io/quiz/](https://jeffreymcfarland.github.io/quiz/)
+Live Link: [https://jeffreymcfarland.github.io/daily_planner/](https://jeffreymcfarland.github.io/daily_planner/)
 
-## Work Day Planner
 
 ### About This Project
 
